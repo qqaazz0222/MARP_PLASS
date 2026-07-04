@@ -209,13 +209,19 @@ section.toc ol li::before {
     color: var(--plass-primary);
 }
 
-/* 본문 슬라이드: <!-- _class: content --> */
-section.content {
+/* 본문 슬라이드: <!-- _class: content-col1 --> (1단) / content-col2 (2단) / content-col3 (3단) / content-col4 (4단) */
+section.content-col1,
+section.content-col2,
+section.content-col3,
+section.content-col4 {
     justify-content: flex-start;
     padding: 0em 1.25em;
 }
 
-section.content::before {
+section.content-col1::before,
+section.content-col2::before,
+section.content-col3::before,
+section.content-col4::before {
     content: "";
     position: absolute;
     top: 0;
@@ -225,7 +231,10 @@ section.content::before {
     background: var(--plass-gradient);
 }
 
-section.content h1 {
+section.content-col1 h1,
+section.content-col2 h1,
+section.content-col3 h1,
+section.content-col4 h1 {
     font-size: 1em;
     color: var(--plass-primary);
     margin-top: 0em;
@@ -234,20 +243,29 @@ section.content h1 {
     border-bottom: 1px solid var(--plass-primary);
 }
 
-section.content h3 {
+section.content-col1 h3,
+section.content-col2 h3,
+section.content-col3 h3,
+section.content-col4 h3 {
     font-size: 0.8em;
     color: var(--plass-text);
     margin-top: 0.45em;
     margin-bottom: 0.4em;
 }
 
-section.content p {
+section.content-col1 p,
+section.content-col2 p,
+section.content-col3 p,
+section.content-col4 p {
     font-size: 0.8em;
     color: var(--plass-text);
     margin-bottom: 0.4em;
 }
 
-section.content p:has(img) {
+section.content-col1 p:has(img),
+section.content-col2 p:has(img),
+section.content-col3 p:has(img),
+section.content-col4 p:has(img) {
     position: fixed;
     top: 1.25em;
     right: 1.5em;
@@ -257,12 +275,213 @@ section.content p:has(img) {
     margin: 0;
 }
 
-section.content ul,
-section.content ol {
+section.content-col1 ul,
+section.content-col1 ol,
+section.content-col2 ul,
+section.content-col2 ol,
+section.content-col3 ul,
+section.content-col3 ol,
+section.content-col4 ul,
+section.content-col4 ol {
     font-size: 0.8em;
     color: var(--plass-text);
     padding-left: 1.5em;
     margin-bottom: 0.4em;
+}
+
+/* 컬럼 분할: 리스트를 N단으로 자동 배치 */
+section.content-col2 ul,
+section.content-col2 ol {
+    column-count: 2;
+    column-gap: 2em;
+}
+
+section.content-col3 ul,
+section.content-col3 ol {
+    column-count: 3;
+    column-gap: 1.5em;
+}
+
+section.content-col4 ul,
+section.content-col4 ol {
+    column-count: 4;
+    column-gap: 1em;
+}
+
+section.content-col2 ul > li,
+section.content-col3 ul > li,
+section.content-col4 ul > li,
+section.content-col2 ol > li,
+section.content-col3 ol > li,
+section.content-col4 ol > li {
+    break-inside: avoid;
+}
+
+/* 본문 + 이미지 슬라이드: <!-- _class: content-img1 --> (이미지 1개) / content-img2 (2개) / content-img3 (3개) / content-img4 (4개) */
+section.content-img1,
+section.content-img2,
+section.content-img3,
+section.content-img4 {
+    display: grid;
+    grid-auto-rows: min-content;
+    align-content: start;
+    row-gap: 0.3em;
+    column-gap: 1em;
+    padding: 0em 1.25em;
+}
+
+section.content-img1 { grid-template-columns: repeat(1, 1fr); }
+section.content-img2 { grid-template-columns: repeat(2, 1fr); }
+section.content-img3 { grid-template-columns: repeat(3, 1fr); }
+section.content-img4 { grid-template-columns: repeat(4, 1fr); }
+
+section.content-img1::before,
+section.content-img2::before,
+section.content-img3::before,
+section.content-img4::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 1.25em;
+    width: calc(100% - 2.5em);
+    height: 0.45em;
+    background: var(--plass-gradient);
+}
+
+section.content-img1 h1,
+section.content-img2 h1,
+section.content-img3 h1,
+section.content-img4 h1 {
+    grid-column: 1 / -1;
+    font-size: 1em;
+    color: var(--plass-primary);
+    margin-top: 0em;
+    padding-top: 0.8em;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--plass-primary);
+}
+
+section.content-img1 h3,
+section.content-img2 h3,
+section.content-img3 h3,
+section.content-img4 h3 {
+    grid-column: 1 / -1;
+    font-size: 0.8em;
+    color: var(--plass-text);
+    margin-top: 0.45em;
+    margin-bottom: 0;
+}
+
+section.content-img1 p:not(:has(img)),
+section.content-img2 p:not(:has(img)),
+section.content-img3 p:not(:has(img)),
+section.content-img4 p:not(:has(img)) {
+    grid-column: 1 / -1;
+    font-size: 0.8em;
+    color: var(--plass-text);
+    margin: 0;
+}
+
+section.content-img1 p:has(img),
+section.content-img2 p:has(img),
+section.content-img3 p:has(img),
+section.content-img4 p:has(img) {
+    margin: 0;
+    height: 100%;
+}
+
+section.content-img1 p:has(img) img,
+section.content-img2 p:has(img) img,
+section.content-img3 p:has(img) img,
+section.content-img4 p:has(img) img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 380px;
+    object-fit: contain;
+}
+
+/* 본문 + 표 슬라이드: <!-- _class: content-table --> */
+section.content-table {
+    justify-content: flex-start;
+    padding: 0em 1.25em;
+}
+
+section.content-table::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 1.25em;
+    width: calc(100% - 2.5em);
+    height: 0.45em;
+    background: var(--plass-gradient);
+}
+
+section.content-table h1 {
+    font-size: 1em;
+    color: var(--plass-primary);
+    margin-top: 0em;
+    padding-top: 0.8em;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--plass-primary);
+}
+
+section.content-table h3 {
+    font-size: 0.8em;
+    color: var(--plass-text);
+    margin-top: 0.45em;
+    margin-bottom: 0.4em;
+}
+
+section.content-table p {
+    font-size: 0.8em;
+    color: var(--plass-text);
+    margin-bottom: 0.4em;
+}
+
+section.content-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.6em;
+    margin-top: 0.4em;
+}
+
+section.content-table th,
+section.content-table td {
+    border: 1px solid var(--plass-primary);
+    padding: 0.5em 0.7em;
+    text-align: left;
+}
+
+section.content-table thead th {
+    background: var(--plass-primary);
+    color: var(--plass-text-inverse);
+}
+
+section.content-table tbody tr:nth-child(even) td {
+    background: rgba(31, 71, 137, 0.08);
+}
+
+/* 각주: [//]: # "내용" 형태로 작성하면 슬라이드 하단에 표시됨 */
+.plass-footnotes {
+    position: absolute;
+    left: 0.4em;
+    right: 0.4em;
+    top: 19em;
+    display: flex;
+    flex-direction: column;
+}
+
+.plass-footnotes p {
+    margin: 0;
+    font-size: 0.4em;
+    line-height: 1.1;
+    color: var(--plass-text);
+    opacity: 0.6;
+}
+
+.plass-footnotes p::before {
+    content: "* ";
 }
 
 /* 다크 섹션: <!-- _class: invert --> */
