@@ -1,0 +1,278 @@
+/*!
+ * @theme plass
+ * @author PLASS
+ */
+
+/* @theme plass */
+
+@import "default";
+
+:root {
+    --plass-primary: #1f4789;
+    --plass-accent: #ff6b35;
+    --plass-text: #1d1d1d;
+    --plass-text-inverse: #ffffff;
+    --plass-gradient: linear-gradient(
+        90deg,
+        #102345 0%,
+        #0c5cbc 60%,
+        #5889d9 100%
+    );
+    --plass-bg: #ffffff;
+    --plass-font:
+        "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+}
+
+section {
+    font-size: 36px;
+    font-family: var(--plass-font);
+    color: var(--plass-text);
+    background-color: var(--plass-bg);
+    background-image: url("assets/bg2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 0px 40px;
+}
+
+section h1,
+section h2,
+section h3 {
+    color: var(--plass-primary);
+    font-weight: 700;
+}
+
+section h1 {
+    font-size: 1em;
+}
+
+section h2 {
+    font-size: 1.25em;
+    border-bottom: 1px solid var(--plass-accent);
+    padding-bottom: 0.2em;
+    display: inline-block;
+}
+
+section a {
+    color: var(--plass-accent);
+}
+
+section footer,
+section header {
+    color: var(--plass-text);
+    opacity: 0.6;
+}
+
+section::after {
+    content: "[" counter(marpit-pagination) "/"
+        attr(data-marpit-pagination-total) "]";
+    color: var(--plass-text);
+    opacity: 0.6;
+    font-size: 16px;
+    bottom: 10px;
+}
+
+/* 표지 슬라이드: <!-- _class: lead --> */
+section.lead {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    padding: 2em 1.25em;
+    background-color: var(--plass-bg);
+    background-image: url("assets/bg1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+section.lead h1 {
+    font-size: 1.125em;
+    color: var(--plass-primary);
+    margin-bottom: 0;
+}
+
+section.lead h1::after {
+    content: "";
+    display: block;
+    width: 160px;
+    height: 2px;
+    margin-top: 0.4em;
+    margin-left: 0.4em;
+    background-color: var(--plass-primary);
+}
+
+section.lead p {
+    font-size: 0.8em;
+    color: var(--plass-text);
+}
+
+section.lead p:has(img) {
+    position: absolute;
+    top: 1.25em;
+    right: 1.25em;
+    display: flex;
+    align-items: center;
+    gap: 0.125em;
+    margin: 0;
+}
+
+section.lead ul {
+    position: absolute;
+    right: 1.5em;
+    bottom: 3em;
+    left: auto;
+    width: auto;
+    text-align: right;
+    line-height: 1.5;
+    font-size: 0.8em;
+    color: var(--plass-text);
+    text-decoration: none;
+    list-style: none;
+    padding-left: 0;
+}
+
+/* 목차 슬라이드: <!-- _class: toc --> */
+section.toc {
+    justify-content: flex-start;
+    gap: 0;
+    padding: 2em 1.25em;
+    background-color: var(--plass-bg);
+    background-image: url("assets/bg1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+section.toc h1 {
+    font-size: 1.125em;
+    color: var(--plass-primary);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+section.toc h1::before {
+    content: "";
+    display: block;
+    width: 160px;
+    height: 4px;
+    margin-bottom: 0.6em;
+    background-color: var(--plass-primary);
+}
+
+section.toc h1::after {
+    content: "";
+    display: block;
+    width: 160px;
+    height: 1px;
+    margin-top: 1.6em;
+    background-color: var(--plass-primary);
+}
+
+section.toc p {
+    font-size: 0.8em;
+    color: var(--plass-text);
+}
+
+section.toc p:has(img) {
+    position: absolute;
+    top: 1.25em;
+    right: 1.25em;
+    display: flex;
+    align-items: center;
+    gap: 0.125em;
+    margin: 0;
+}
+
+section.toc ol {
+    padding-left: 0;
+    list-style: none;
+    counter-reset: toc-counter;
+}
+
+section.toc ol li {
+    counter-increment: toc-counter;
+    display: flex;
+    align-items: baseline;
+    gap: 1.5em;
+    margin: 0.6em 0;
+    font-size: 0.8em;
+    font-weight: 700;
+    color: var(--plass-text);
+}
+
+section.toc ol li::before {
+    content: counter(toc-counter, decimal-leading-zero);
+    flex-shrink: 0;
+    width: 1.5em;
+    color: var(--plass-primary);
+}
+
+/* 본문 슬라이드: <!-- _class: content --> */
+section.content {
+    justify-content: flex-start;
+    padding: 0em 1.25em;
+}
+
+section.content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 1.25em;
+    width: calc(100% - 2.5em);
+    height: 0.45em;
+    background: var(--plass-gradient);
+}
+
+section.content h1 {
+    font-size: 1em;
+    color: var(--plass-primary);
+    margin-top: 0em;
+    padding-top: 0.8em;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--plass-primary);
+}
+
+section.content h3 {
+    font-size: 0.8em;
+    color: var(--plass-text);
+    margin-top: 0.45em;
+    margin-bottom: 0.4em;
+}
+
+section.content p {
+    font-size: 0.8em;
+    color: var(--plass-text);
+    margin-bottom: 0.4em;
+}
+
+section.content p:has(img) {
+    position: fixed;
+    top: 1.25em;
+    right: 1.5em;
+    display: flex;
+    align-items: center;
+    gap: 0.125em;
+    margin: 0;
+}
+
+section.content ul,
+section.content ol {
+    font-size: 0.8em;
+    color: var(--plass-text);
+    padding-left: 1.5em;
+    margin-bottom: 0.4em;
+}
+
+/* 다크 섹션: <!-- _class: invert --> */
+section.invert {
+    color: var(--plass-text-inverse);
+    background-color: var(--plass-primary);
+}
+
+section.invert h1,
+section.invert h2,
+section.invert h3 {
+    color: var(--plass-text-inverse);
+}

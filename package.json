@@ -1,0 +1,15 @@
+{
+  "name": "plass-marp",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "watch": "marp -w template.md",
+    "build:html": "marp template.md -o dist/template.html",
+    "build:pdf": "marp template.md -o dist/template.pdf --allow-local-files",
+    "server": "marp -s .",
+    "dev": "marp -w -s . --preview --allow-local-files"
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^3.4.0"
+  }
+}
