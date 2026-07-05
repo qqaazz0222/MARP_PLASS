@@ -6,6 +6,7 @@
     "watch": "marp -w template.md",
     "build:html": "marp template.md -o dist/template.html",
     "build:pdf": "marp template.md -o dist/template.pdf --allow-local-files",
+    "build:pptx": "python3 scripts/build_pptx.py",
     "server": "marp -s .",
     "dev": "marp -w -s . --preview --allow-local-files"
   },
